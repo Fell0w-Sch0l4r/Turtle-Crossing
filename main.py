@@ -27,6 +27,10 @@ while True:
     
     cars.show_car()
     cars.move_cars()
+    cars.shift_cars()
+    
+    if cars.colided(player):
+        break
     
     if player.in_finish_line():
         player.next_level()
