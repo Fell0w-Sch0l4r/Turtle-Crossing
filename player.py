@@ -13,17 +13,14 @@ class Player(Turtle):
         self.penup()
         self.setheading(NORTH)
         self.setpos(STARTING_POSITION)
-        
-        
+
     def next_level(self):
         self.setpos(STARTING_POSITION)
-        
-        
+
     def in_finish_line(self) -> bool:
         if self.ycor() >= 280:
             return True
-        
-        
+
     def up(self):
         new_y: float = self.ycor() + MOVE_DISTANCE
         self.sety(new_y)
