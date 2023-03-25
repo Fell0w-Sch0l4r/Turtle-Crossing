@@ -1,5 +1,5 @@
-import time
-from turtle import Screen, Turtle
+from time import sleep
+from turtle import Screen
 from player import Player
 from car_manager import CarManager
 from scoreboard import Scoreboard
@@ -20,7 +20,7 @@ screen.onkey(key="Up", fun=player.up)
 
 
 while True:
-    time.sleep(0.1)
+    sleep(cars.playtime)
     screen.update()
     
     cars.move_cars()
@@ -32,6 +32,7 @@ while True:
     if player.in_finish_line():
         player.next_level()
         score_board.increase_level()
+        cars.increase_cars_speed()
 
 
 screen.exitonclick()
