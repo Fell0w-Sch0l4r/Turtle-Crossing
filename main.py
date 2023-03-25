@@ -3,10 +3,8 @@ from turtle import Screen, Turtle
 from player import Player
 from car_manager import CarManager
 from scoreboard import Scoreboard
-from random import choice, randint
 
 
-COLORS = ["red", "orange", "yellow", "green", "blue", "purple"]
 
 screen = Screen()
 screen.setup(width=600, height=600)
@@ -25,11 +23,10 @@ while True:
     time.sleep(0.1)
     screen.update()
     
-    cars.show_car()
     cars.move_cars()
-    cars.shift_cars()
     
-    if cars.colided(player):
+    if cars.colided_with_player(player):
+        score_board.game_over()
         break
     
     if player.in_finish_line():
@@ -39,7 +36,4 @@ while True:
 
 screen.exitonclick()
 
-"""game_is_on = True
-while game_is_on:
-    time.sleep(0.1)
-    screen.update()"""
+
