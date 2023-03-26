@@ -13,7 +13,7 @@ class CarManager:
         
         self.create_cars(num_of_cars=45)
         
-        self.playtime = 0.1
+        self.move_speed = STARTING_MOVE_DISTANCE
 
     def create_cars(self, num_of_cars: int):
         for _ in range(num_of_cars):
@@ -27,7 +27,8 @@ class CarManager:
 
     @staticmethod
     def can_show_car() -> bool:
-        return choice([True, False])
+        if randint(1, 6) == 1:
+            return True
           
     def show_car(self):
         if self.can_show_car():
@@ -40,7 +41,7 @@ class CarManager:
         self.shift_cars()
         
         for car in self.visible_cars:
-            car.backward(5)
+            car.backward(self.move_speed)
 
     def get_hidden_cars_indexes(self) -> list:
         hidden_cars_index = []
@@ -52,7 +53,7 @@ class CarManager:
     
     @staticmethod
     def set_car_position(car: Turtle):
-        car.setpos(x=320, y=randint(-250, 250))
+        car.setpos(x=320, y=randint(-240, 240))
 
     @staticmethod
     def set_car_color(car: Turtle):
@@ -86,4 +87,4 @@ class CarManager:
                     return True
 
     def increase_cars_speed(self):
-        self.playtime *= 0.9
+        self.move_speed += MOVE_INCREMENT

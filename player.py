@@ -18,9 +18,8 @@ class Player(Turtle):
         self.setpos(STARTING_POSITION)
 
     def in_finish_line(self) -> bool:
-        if self.ycor() >= 280:
+        if self.ycor() >= FINISH_LINE_Y:
             return True
 
     def up(self):
-        new_y: float = self.ycor() + MOVE_DISTANCE
-        self.sety(new_y)
+        self.forward(MOVE_DISTANCE)
