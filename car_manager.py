@@ -21,7 +21,7 @@ class CarManager:
             car.penup()
             car.shapesize(stretch_len=2)
             
-            self.modify_car(car)
+            self.set_car(car)
             
             self.invisible_cars.append(car)
 
@@ -51,22 +51,22 @@ class CarManager:
         return hidden_cars_index
     
     @staticmethod
-    def set_random_position(car: Turtle):
+    def set_car_position(car: Turtle):
         car.setpos(x=320, y=randint(-250, 250))
 
     @staticmethod
-    def set_random_color(car: Turtle):
+    def set_car_color(car: Turtle):
         car.color(choice(COLORS))
 
-    def modify_car(self, car: Turtle):
+    def set_car(self, car: Turtle):
         """Changes the color and the position
         of the car.
 
         Args:
             car (Turtle): The car
         """
-        self.set_random_color(car)
-        self.set_random_position(car)
+        self.set_car_color(car)
+        self.set_car_position(car)
                 
     def shift_cars(self):
         hidden_cars_indexes = self.get_hidden_cars_indexes()
@@ -74,7 +74,7 @@ class CarManager:
         if len(hidden_cars_indexes) >= 1:
             for index in hidden_cars_indexes:
                 car: Turtle = self.visible_cars[index]
-                self.modify_car(car)
+                self.set_car(car)
 
                 self.invisible_cars.append(car)
                 self.visible_cars.pop(index)
